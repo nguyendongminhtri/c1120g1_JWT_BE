@@ -60,12 +60,12 @@ public class AuthController {
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpForm signUpRequest) {
         if (userService.existsByUsername(signUpRequest.getUsername())) {
             return new ResponseEntity<>(new ResponseMessage("Fail -> Username is already taken!"),
-                HttpStatus.BAD_REQUEST);
+                HttpStatus.OK);
         }
 
         if (userService.existsByEmail(signUpRequest.getEmail())) {
             return new ResponseEntity<>(new ResponseMessage("Fail -> Email is already in use!"),
-                HttpStatus.BAD_REQUEST);
+                HttpStatus.OK);
         }
 
         // Creating user's account
